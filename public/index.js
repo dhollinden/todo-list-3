@@ -2,6 +2,11 @@
   let note = document.querySelector("textarea");
 
   let state;
+
+  function store(item, value) {
+    localStorage.setItem(item, JSON.stringify(value));
+  }
+
   function setState(newState) {
     list.textContent = "";
     for (let name of Object.keys(newState.notes)) {
@@ -12,7 +17,7 @@
     }
     note.value = newState.notes[newState.selected];
 
-    localStorage.setItem("Notes", JSON.stringify(newState));
+    store("Notes", newState);
     state = newState;
   }
   setState(JSON.parse(localStorage.getItem("Notes")) || {
@@ -23,6 +28,7 @@
   list.addEventListener("change", () => {
     setState({notes: state.notes, selected: list.value});
   });
+
   note.addEventListener("change", () => {
     setState({
       notes: Object.assign({}, state.notes,
@@ -30,6 +36,7 @@
       selected: state.selected
     });
   });
+
   document.querySelector("button")
     .addEventListener("click", () => {
       let name = prompt("Note name");
