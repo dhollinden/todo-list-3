@@ -7,6 +7,11 @@
     localStorage.setItem(item, JSON.stringify(value));
   }
 
+  function retrieve(item) {
+      console.log(JSON.parse(localStorage.getItem(item)));
+    return JSON.parse(localStorage.getItem(item));
+  }
+
   function setState(newState) {
     list.textContent = "";
     for (let name of Object.keys(newState.notes)) {
@@ -20,7 +25,8 @@
     store("Notes", newState);
     state = newState;
   }
-  setState(JSON.parse(localStorage.getItem("Notes")) || {
+
+  setState(retrieve("Notes") || {
     notes: {"shopping list": "Carrots\nRaisins"},
     selected: "shopping list"
   });
