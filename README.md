@@ -1,6 +1,20 @@
 Read Me
 
-I todo-list-2
-• JavaScript is removed from index.html and placed in index.js
-• Express is used as the web server
-• Only static files are served
+todo-list-3
+
+• index.js: the code that stores/retrieves items is converted into functions
+• local-storage.js: the store/retrieve functions are placed in modules
+• server.js: the store/retrieve functions are loaded and dynamically injected as strings into io-config.js using the jsToJs package
+• index.js: the strings are converted back into the store/retrieve functions using eval()
+
+
+todo-list-2
+
+• server.js: Express is used to serve static files
+
+
+todo-list-1
+
+• index.html: simple select, button and text area; includes index.js
+• index.js: simple todo-list from Eloquent Javascript
+• server.js: created in node using http, mime, path, url, and fs packages 
